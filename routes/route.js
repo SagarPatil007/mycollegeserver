@@ -8,7 +8,6 @@ const {Addnote,getAllnotes} = require("../controllers/Notes");
 const {contactUS} = require("../controllers/Contactus");
 const {addBlog,getallblog,getblog} = require("../controllers/blog");
 const {userInfo} = require("../controllers/userinfo");
-const {auth} = require("../middleware/auth");
 
 
 // protected routes
