@@ -30,7 +30,7 @@ exports.addBlog = async (req,res) => {
             })
         }
         
-        const supportedFiles = ["pg","peg","ng","ebp"];
+        const supportedFiles = ["jpg","jpeg","png","webp"];
         
         const extension = fileimage.name.substring(fileimage.name.lastIndexOf('.') + 1, fileimage.name.length);
 
