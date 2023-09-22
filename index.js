@@ -7,7 +7,7 @@ const cookieparser = require("cookie-parser")
 
 
 const corsOptions = {
-  origin : "http://localhost:5173",//included origin as true
+  origin : "https://myclg.netlify.app/",//included origin as true
   credentials: true, //included credentials as true
 };
 
