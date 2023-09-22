@@ -3,11 +3,15 @@ const app = express();
 const dbConnect = require("./config/database");
 const cors = require("cors");
 require("dotenv").config();
+const cookieparser = require("cookie-parser")
+
 
 const corsOptions = {
-    origin: "*",
-    credentials:true,     
+  origin : "http://localhost:5173",//included origin as true
+  credentials: true, //included credentials as true
 };
+
+app.use(cookieparser());
 
 const fileupload = require('express-fileupload')
 app.use(fileupload({
@@ -36,3 +40,4 @@ app.get("/", (req, res)=>{
 app.listen(PORT, () => {
     console.log(`Server is listening on http://localhost:${PORT}`);
 })
+

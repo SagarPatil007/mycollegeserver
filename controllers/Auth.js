@@ -4,6 +4,7 @@ const jwt = require("jsonwebtoken");
 require("dotenv").config();
 
 exports.Signin = async(req,res) => {
+
     try {
         //data fetch
         const {email, password} = req.body;
@@ -54,12 +55,21 @@ exports.Signin = async(req,res) => {
                 { multi: true },
             )
 
-            res.send({ 
-                id:user._id,
-                name : user.name,
-                token:token
+         
+            res.cookie("access_token",token,{
+                expires:new Date(Date.now() + 60*60*1000),
+                httpOnly : false,   
+                sameSite : 'Lax',   
+            }).status(200).json({
+                success : true,
+                data : {
+                    id : user._id,
+                    name : user.name,
+                    token:token
+                },
+                message : "Cookie set Succcessfully"
             })
-            
+  
         }
         else {
             //passwsord do not match
@@ -124,3 +134,5 @@ exports.Signup = async(req,res) => {
         });
     }
 }
+
+

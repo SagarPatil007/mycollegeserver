@@ -1,6 +1,10 @@
 const express = require("express");
 const router = express.Router();    
 
+// middleware
+
+const {auth} = require("../middleware/auth"); 
+
 // controller
 const {Signin,Signup} = require("../controllers/Auth");
 const {Roadmap,getRoadmap} = require("../controllers/Roadmap");
@@ -26,9 +30,9 @@ router.get("/getallnotes", getAllnotes)
 router.post("/contact",contactUS)
 router.get("/viewblog",getallblog);
 router.get("/viewblog/:id",getblog);
-router.get("/userinfo/:id",userInfo)
-router.post("/addnote", Addnote)
-router.post("/addblog",addBlog)
+router.get("/userinfo/:id",auth,userInfo)
+router.post("/addnote",auth, Addnote)
+router.post("/addblog",auth,addBlog)
 
 
 module.exports = router; 
